@@ -135,7 +135,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
             endingLineNumber = "51"
-            landmarkName = "-handleLongPress:"
+            landmarkName = "-initWithProtocol:targetView:backgroundColorPressed:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

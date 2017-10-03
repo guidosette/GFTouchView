@@ -10,10 +10,22 @@
 
 @protocol GFTouchViewProtocol <NSObject>
 
+/**
+ Called when finish pressing on targetView
+ @param targetView is a view target of tap.
+ */
 - (void) clickOnView:(UIView*)targetView;
 
+/**
+ Called when start pressing on targetView
+ @param targetView is a view target of tap.
+ */
 - (void) onPressedView:(UIView*)targetView;
 
+/**
+ Called when finish pressing on targetView
+ @param targetView is a view target of tap.
+ */
 - (void) onPressedViewEnd:(UIView*)targetView;
 
 @end

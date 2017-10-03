@@ -20,6 +20,15 @@
 
 @implementation GFTouchGesture
 
+- (instancetype)initWithTargetView:(UIView*)targetView {
+    self = [super initWithTarget:self action:@selector(handleLongPress:)];
+    if (self) {
+        _targetView = targetView;
+        [self initialize];
+    }
+    return self;
+}
+
 - (instancetype)initWithProtocol:(id<GFTouchViewProtocol>)protocol targetView:(UIView*)targetView {
     self = [super initWithTarget:self action:@selector(handleLongPress:)];
     if (self) {
@@ -58,7 +67,9 @@
                 //default backgroundColor pressed
                 _targetView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.15];
             }
-            [_delegateProtocol onPressedView:_targetView];
+            if ([self.delegateProtocol respondsToSelector:@selector(onPressedView:)]) {
+                [_delegateProtocol onPressedView:_targetView];
+            }
             break;
         }
         case UIGestureRecognizerStateChanged: {
@@ -89,8 +100,6 @@
                     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                         [self.delegateProtocol clickOnView:_targetView];
                     });
-                } else {
-                    [NSException raise:@"TouchView: GFTouchViewProtocol not found!" format:@"%@ not conform with GFTouchViewProtocol", self.delegateProtocol.class];
                 }
             }
             break;
@@ -105,8 +114,9 @@
 
 - (void) restoreView {
     _targetView.backgroundColor = self.backgroundColorOriginal;
-    [_delegateProtocol onPressedViewEnd:_targetView];
-
+    if ([self.delegateProtocol respondsToSelector:@selector(onPressedViewEnd:)]) {
+        [_delegateProtocol onPressedViewEnd:_targetView];
+    }
 }
 
 - (bool)isContainInContainerView:(UIView*)container targetView:(UIView*)targetView {

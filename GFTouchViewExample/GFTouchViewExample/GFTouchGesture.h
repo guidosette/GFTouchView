@@ -11,8 +11,25 @@
 
 @interface GFTouchGesture : UILongPressGestureRecognizer
 
+/**
+ Change background color of targetView when pressed on it.
+ @param targetView is a view target of tap.
+ */
+- (instancetype)initWithTargetView:(UIView*)targetView;
+
+/**
+ Change background color of targetView when pressed on it.
+ @param protocol it's a object (view controller) that implements a GFTouchViewProtocol.
+ @param targetView is a view target of tap.
+ */
 - (instancetype)initWithProtocol:(id<GFTouchViewProtocol>)protocol targetView:(UIView*)targetView;
 
+/**
+ Change background color of targetView when pressed on it.
+ @param protocol it's a object (view controller) that implements a GFTouchViewProtocol.
+ @param targetView is a view target of tap.
+ @param backgroundPressed When touch or press the targetView, its backgroundColor change to backgroundPressed.
+ */
 - (instancetype)initWithProtocol:(id<GFTouchViewProtocol>)protocol targetView:(UIView*)targetView backgroundColorPressed:(UIColor*)backgroundPressed;
 
 @end
