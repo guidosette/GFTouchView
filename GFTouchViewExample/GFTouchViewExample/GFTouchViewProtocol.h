@@ -12,4 +12,8 @@
 
 - (void) clickOnView:(UIView*)targetView;
 
+- (void) onPressedView:(UIView*)targetView;
+
+- (void) onPressedViewEnd:(UIView*)targetView;
+
 @end

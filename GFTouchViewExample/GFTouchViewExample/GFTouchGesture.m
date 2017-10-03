@@ -14,6 +14,7 @@
 @property UIColor* backgroundColorPressed;
 @property UIColor* backgroundColorOriginal;
 @property UIView* targetView;
+@property bool onFocus;
 
 @end
 
@@ -49,6 +50,7 @@
 - (void)handleLongPress:(UILongPressGestureRecognizer *)gr {
     switch (gr.state){
         case UIGestureRecognizerStateBegan: {
+            _onFocus = true;
             // change background on press
             if (self.backgroundColorPressed) {
                 _targetView.backgroundColor = self.backgroundColorPressed;
@@ -56,21 +58,27 @@
                 //default backgroundColor pressed
                 _targetView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.15];
             }
+            [_delegateProtocol onPressedView:_targetView];
             break;
         }
         case UIGestureRecognizerStateChanged: {
             UIView *tappedView = [gr.view hitTest:[gr locationInView:gr.view] withEvent:nil];
             if (![self isContainInContainerView:_targetView targetView:tappedView]) {
                 //if touch is outside viewTarget
+                _onFocus = false;
                 //restore background
-                _targetView.backgroundColor = self.backgroundColorOriginal;
+                [self restoreView];
             }
             break;
 
         }
         case UIGestureRecognizerStateEnded: {
             //restore background
-            _targetView.backgroundColor = self.backgroundColorOriginal;
+            [self restoreView];
+            
+            if (!_onFocus) {
+                return;
+            }
 
             UIView *tappedView = [gr.view hitTest:[gr locationInView:gr.view] withEvent:nil];
             if ([self isContainInContainerView:_targetView targetView:tappedView]) {
@@ -89,10 +97,16 @@
         }
         default: {
             //restore background
-            _targetView.backgroundColor = self.backgroundColorOriginal;
+            [self restoreView];
             break;
         }
     }
+}
+
+- (void) restoreView {
+    _targetView.backgroundColor = self.backgroundColorOriginal;
+    [_delegateProtocol onPressedViewEnd:_targetView];
+
 }
 
 - (bool)isContainInContainerView:(UIView*)container targetView:(UIView*)targetView {

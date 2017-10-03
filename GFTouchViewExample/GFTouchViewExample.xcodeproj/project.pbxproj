@@ -14,7 +14,6 @@
 		C5F744481F838CB800839698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5F744471F838CB800839698 /* Assets.xcassets */; };
 		C5F7444B1F838CB800839698 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5F744491F838CB800839698 /* LaunchScreen.storyboard */; };
 		C5F7444E1F838CB800839698 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F7444D1F838CB800839698 /* main.m */; };
-		C5F7445B1F8396F100839698 /* UIView+GFTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F7445A1F8396F100839698 /* UIView+GFTouchView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,8 +30,6 @@
 		C5F7444C1F838CB800839698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5F7444D1F838CB800839698 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C5F744581F8396CF00839698 /* GFTouchViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GFTouchViewProtocol.h; sourceTree = "<group>"; };
-		C5F744591F8396F100839698 /* UIView+GFTouchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+GFTouchView.h"; sourceTree = "<group>"; };
-		C5F7445A1F8396F100839698 /* UIView+GFTouchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+GFTouchView.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +72,6 @@
 				C5F7444C1F838CB800839698 /* Info.plist */,
 				C5F7444D1F838CB800839698 /* main.m */,
 				C5F744581F8396CF00839698 /* GFTouchViewProtocol.h */,
-				C5F744591F8396F100839698 /* UIView+GFTouchView.h */,
-				C5F7445A1F8396F100839698 /* UIView+GFTouchView.m */,
 				C5664E101F839EE80044904D /* GFTouchGesture.h */,
 				C5664E111F839EE80044904D /* GFTouchGesture.m */,
 			);
@@ -156,7 +151,6 @@
 			files = (
 				C5F744431F838CB800839698 /* ViewController.m in Sources */,
 				C5F7444E1F838CB800839698 /* main.m in Sources */,
-				C5F7445B1F8396F100839698 /* UIView+GFTouchView.m in Sources */,
 				C5664E121F839EE80044904D /* GFTouchGesture.m in Sources */,
 				C5F744401F838CB800839698 /* AppDelegate.m in Sources */,
 			);
@@ -293,9 +287,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q8A3E6Y4L7;
 				INFOPLIST_FILE = GFTouchViewExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.distudio.GFTouchViewExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fanfa.GFTouchViewExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -306,9 +301,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q8A3E6Y4L7;
 				INFOPLIST_FILE = GFTouchViewExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.distudio.GFTouchViewExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fanfa.GFTouchViewExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

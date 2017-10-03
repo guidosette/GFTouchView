@@ -7,12 +7,13 @@
 //
 
 #import "ViewController.h"
-#import "UIView+GFTouchView.h"
 #import "GFTouchGesture.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIView *buttonView;
 @property (weak, nonatomic) IBOutlet UIView *buttonView2;
+@property (weak, nonatomic) IBOutlet UILabel *label1;
+@property (weak, nonatomic) IBOutlet UILabel *label2;
 
 @end
 
@@ -32,7 +33,6 @@
 
 #pragma - GFTouchViewProtocol
 - (void)clickOnView:(UIView *)targetView {
-    NSLog(@"clickOnView");
     if ([targetView isEqual:_buttonView]) {
         NSLog(@"click _buttonView");
     }
@@ -42,10 +42,24 @@
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)onPressedView:(UIView*)targetView {
+    if ([targetView isEqual:_buttonView]) {
+        _label1.textColor = [UIColor whiteColor];
+    }
+    
+    if ([targetView isEqual:_buttonView2]) {
+        _label2.textColor = [UIColor whiteColor];
+    }
 }
 
+- (void)onPressedViewEnd:(UIView*)targetView {
+    if ([targetView isEqual:_buttonView]) {
+        _label1.textColor = [UIColor blackColor];
+    }
+    
+    if ([targetView isEqual:_buttonView2]) {
+        _label2.textColor = [UIColor blackColor];
+    }
+}
 
 @end
