@@ -1,2 +1,2 @@
 # GFTouchView
-Canhe background color on touch view.
+Change background color on touch view.
