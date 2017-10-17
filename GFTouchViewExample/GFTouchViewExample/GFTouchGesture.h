@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GFTouchViewProtocol.h"
 
-@interface GFTouchGesture : UILongPressGestureRecognizer
+@interface GFTouchGesture : UILongPressGestureRecognizer<UIGestureRecognizerDelegate>
 
 /**
  Change background color of targetView when pressed on it.
