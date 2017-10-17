@@ -18,7 +18,11 @@
 
 @end
 
-@implementation GFTouchGesture
+@implementation GFTouchGesture {
+        bool canClick;
+}
+
+static const float OFFSET_MOVE_MAX = 1.0f;
 
 - (instancetype)initWithTargetView:(UIView*)targetView {
     self = [super initWithTarget:self action:@selector(handleLongPress:)];
@@ -54,6 +58,25 @@
     _backgroundColorOriginal = _targetView.backgroundColor;
     self.minimumPressDuration = 0;
     self.cancelsTouchesInView = false;
+     [_targetView addGestureRecognizer:self];
+    _targetView.userInteractionEnabled = true;
+    self.delegate = self;
+    canClick = true;
+}
+
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(nonnull UIGestureRecognizer *)otherGestureRecognizer {
+    if ([otherGestureRecognizer isKindOfClass:UIPanGestureRecognizer.class]) {
+        UIPanGestureRecognizer* panGestureRecognizer = (UIPanGestureRecognizer*) otherGestureRecognizer;
+        CGPoint translation = [panGestureRecognizer translationInView:_targetView];
+        if (fabs(translation.y) > OFFSET_MOVE_MAX || fabs(translation.x) > OFFSET_MOVE_MAX) {
+            canClick = false;
+        } else {
+            canClick = true;
+        }
+    } else {
+        canClick = true;
+    }
+    return true;
 }
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)gr {
@@ -87,7 +110,7 @@
             //restore background
             [self restoreView];
             
-            if (!_onFocus) {
+            if (!_onFocus || !canClick) {
                 return;
             }
 
